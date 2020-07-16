@@ -10,7 +10,7 @@ namespace LenguajeS
         static void Main(string[] args)
         {
 
-            if (args[0].ToLowerInvariant() == "compile")
+            if (args.Length > 0 && args[0].ToLowerInvariant() == "compile")
             {
                 var uncompiledInstructions = File.ReadAllLines(args[1]).ToList();
 
@@ -21,7 +21,7 @@ namespace LenguajeS
                 Console.WriteLine("The program was formed by {0} instructions");
 
             }
-            else if (args[0].ToLowerInvariant() == "decompile")
+            else if (args.Length > 0 && args[0].ToLowerInvariant() == "decompile")
             {
                 if (args.Length > 1 && BigInteger.TryParse(args[1], out BigInteger code))
                 {
@@ -47,24 +47,26 @@ namespace LenguajeS
                             Console.WriteLine("Could't create File. Error: ", e.Message);
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid code");
-                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("Invalid Argument");
-                    Console.WriteLine(
-                        "Call LenguajeS compile Path/To/File to compile and generate the code for said program");
-                    Console.WriteLine(
-                        "Call LenguajeS decompile ProgramNumber to generate the code of said program code");
+                    Console.WriteLine("Invalid code");
                 }
-
-
-                Console.WriteLine("\n\n\n\nPress any key to exit...");
-
             }
+            else
+            {
+                Console.WriteLine("Invalid Argument");
+                Console.WriteLine(
+                    "Call LenguajeS compile Path/To/File to compile and generate the code for said program");
+                Console.WriteLine(
+                    "Call LenguajeS decompile ProgramNumber to generate the code of said program code");
+            }
+
+
+            Console.WriteLine("\n\n\n\nPress any key to exit...");
+            Console.ReadKey(true);
         }
     }
 }
+

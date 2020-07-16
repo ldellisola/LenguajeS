@@ -1,8 +1,7 @@
 {
   "profiles": {
     "LenguajeS": {
-      "commandName": "Project",
-      "commandLineArgs": "decompile 1619 save C:\\Users\\luckd\\Desktop\\test2.txt"
+      "commandName": "Project"
     }
   }
 }
